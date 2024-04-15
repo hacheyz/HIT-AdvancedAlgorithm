@@ -27,42 +27,37 @@ def main():
     runtimes = []
     mst_weights = []
 
-    g = RandomGraph(8)
-    g.randomize()
-    ret = g.prim()
-    print()
+    for n in n_list:
+        graph = RandomGraph(n)
+        mst_weight = 0
 
-    # for n in n_list:
-    #     graph = RandomGraph(n)
-    #     mst_weight = 0
-    #
-    #     start_time = time.time()
-    #     for _ in range(iter_num):
-    #         graph.randomize()
-    #         mst_weight += graph.prim()
-    #     end_time = time.time()
-    #
-    #     runtimes.append((end_time - start_time)/iter_num)
-    #     mst_weights.append(mst_weight/iter_num)
-    #
-    # fig = plt.figure(dpi=400)
-    # ax = fig.add_subplot(111)
-    # ax.plot(n_list, runtimes, label='runtime')
-    # ax.set_ylabel('Runtime (s)')
-    # ax.set_xlabel('Vertex num n')
-    # ax.set_title('Runtime of Prim Algorithm')
-    # plt.show()
-    #
-    # fig = plt.figure(dpi=400)
-    # ax = fig.add_subplot(111)
-    # ax.plot(n_list, mst_weights, label='mst_weights')
-    # Apery_const = zeta(3)  # Apery's constant
-    # ax.plot([0, n_list[-1]], [Apery_const, Apery_const], linestyle='--', c='gray')
-    # ax.set_ylabel('Mean weight of MST')
-    # ax.set_xlabel('Vertex num n')
-    # ax.set_title('Relation between n and mean weight of MST')
-    # ax.set_ylim(1.0, 1.4)
-    # plt.show()
+        start_time = time.time()
+        for _ in range(iter_num):
+            graph.randomize()
+            mst_weight += graph.prim()
+        end_time = time.time()
+
+        runtimes.append((end_time - start_time)/iter_num)
+        mst_weights.append(mst_weight/iter_num)
+
+    fig = plt.figure(dpi=400)
+    ax = fig.add_subplot(111)
+    ax.plot(n_list, runtimes, label='runtime')
+    ax.set_ylabel('Runtime (s)')
+    ax.set_xlabel('Vertex num n')
+    ax.set_title('Runtime of Prim Algorithm')
+    plt.show()
+
+    fig = plt.figure(dpi=400)
+    ax = fig.add_subplot(111)
+    ax.plot(n_list, mst_weights, label='mst_weights')
+    Apery_const = zeta(3)  # Apery's constant
+    ax.plot([0, n_list[-1]], [Apery_const, Apery_const], linestyle='--', c='gray')
+    ax.set_ylabel('Mean weight of MST')
+    ax.set_xlabel('Vertex num n')
+    ax.set_title('Relation between n and mean weight of MST')
+    ax.set_ylim(1.0, 1.4)
+    plt.show()
 
 
 if __name__ == '__main__':
