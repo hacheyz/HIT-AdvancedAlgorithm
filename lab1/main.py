@@ -66,3 +66,14 @@ if __name__ == "__main__":
         ret_min_hash = min_hash_sim_pairs(sets, c, n)
         simlaritys.append(jaccard_similarity(set(ret_naive), set(ret_min_hash)))
     draw_sim(simlaritys, h_num)
+
+    # 抽取数据集中不同比例的的子集，开展实验
+    subset_sizes = np.arange(100, 1000, 100)
+    simlaritys = []
+    for n in subset_sizes:
+        sets = get_sub_sets(full_sets, n)
+        ret_naive = naive_sim_pairs(sets, c)
+        ret_min_hash = min_hash_sim_pairs(sets, c, 30)
+        simlaritys.append(jaccard_similarity(set(ret_naive), set(ret_min_hash)))
+    for i in range(len(subset_sizes)):
+        print(f"Subset size: {subset_sizes[i]}, similarity: {simlaritys[i]:.4%}")
