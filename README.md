@@ -16,3 +16,4 @@
 - hw2: [球和箱子模型](https://github.com/hacheyz/HIT-AdvancedAlgorithm/tree/main/hw/hw2)
 - hw3: [切尔诺夫界与鞍](https://github.com/hacheyz/HIT-AdvancedAlgorithm/tree/main/hw/hw3)
 
+> 包含作业题和我的作答，**仅供参考！！！**
